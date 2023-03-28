@@ -3,7 +3,10 @@
     "description": "",
     "keywords": [
         "kmuharam",
-        "tamex-php"
+        "tamex-php",
+        "shipping",
+        "cargo",
+        "logistics"
     ],
     "homepage": "https://github.com/kmuharam/tamex-php",
     "license": "MIT",
@@ -23,18 +26,17 @@
     },
     "autoload": {
         "psr-4": {
-            "Kmuharam\\TamexPhp\\": "src"
+            "Kmuharam\\Tamex\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Kmuharam\\TamexPhp\\Tests\\": "tests"
+            "Kmuharam\\Tamex\\Tests\\": "tests"
         }
     },
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
-
     },
     "config": {
         "sort-packages": true
