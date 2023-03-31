@@ -48,7 +48,13 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li>
+      <a href="#usage">Usage</a>
+      <ul>
+        <li><a href="#quick-start">Quick start</a></li>
+        <li><a href="#expected-responses">Expected responses</a></li>
+      </ul>
+    </li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -100,6 +106,8 @@ composer require kmuharam/tamex-php
 
 ## Usage
 
+### Quick start
+
 In the below code you find an example implementation of the three operations supported by the API.
 
 ```php
@@ -109,7 +117,11 @@ In the below code you find an example implementation of the three operations sup
 namespace MyAwesomeApp\Shipments\Services;
 
 use Kmuharam\Tamex\Requests\CreateShipmentRequest;
+use Kmuharam\Tamex\Requests\PrintWaybillRequest;
+use Kmuharam\Tamex\Requests\ShipmentStatusRequest;
 use Kmuharam\Tamex\Responses\CreateShipmentResponse;
+use Kmuharam\Tamex\Responses\PrintWaybillResponse;
+use Kmuharam\Tamex\Responses\ShipmentStatusResponse;
 
 class MyTamexServices
 {
@@ -236,6 +248,155 @@ class MyTamexServices
 -   [Query shipment status request parameters](src/Requests/PrintWaybillRequest.php)
 -   [Print waybill request parameters](src/Requests/ShipmentStatusRequest.php)
 
+### Expected responses
+
+**Create shipment response**
+
+```php
+<?php
+// ...
+
+// contains original response received from the API
+$response->raw;
+
+// operation status code
+// 0 = Return tmxAWB,
+// 90001 = Error in Json Record Format,
+// 90003 = API KEY NOT AUTORIZED,
+// 90004 = ERROR Contact Support
+$response->code;
+
+// operation status text
+// 0 = Operation Success,
+// 90001 = JSON,
+// 90003 = Authorization,
+// 90004 = System
+$response->data;
+
+// airway bill code
+$response->tmxAWB;
+
+// returns true if shipment creation failed
+$response->hasError();
+
+// returns true if shipment creation succeeded
+$response->created();
+
+// array wrapping response properties and methods
+// [
+//  'error' => $this->hasError(),
+//  'created' => $this->created(),
+//  'code' => $this->code,
+//  'data' => $this->data,
+//  'tmxAWB' => $this->tmxAWB,
+// ]
+$response->response();
+
+// ...
+```
+
+**Shipment status response**
+
+```php
+<?php
+// ...
+
+// contains original response received from the API
+$response->raw;
+
+// operation status code
+// 0 = Return tmxAWB,
+// 90001 = Error in Json Record Format,
+// 90003 = API KEY NOT AUTORIZED,
+// 90004 = ERROR Contact Support
+$response->code;
+
+// operation status text
+// 0 = Operation Success,
+// 90001 = JSON,
+// 90003 = Authorization,
+// 90004 = System
+$response->data;
+
+// airway bill code
+$response->awb;
+
+// status message code
+$response->status;
+
+// Status update date and time
+$response->updateOn;
+
+// status message string
+$response->message;
+
+// returns true if shipment creation failed
+$response->hasError();
+
+// returns true if shipment exists
+$response->exists();
+
+// array wrapping response properties and methods
+// [
+//  'error' => $this->hasError(),
+//  'exists' => $this->exists(),
+//  'code' => $this->code,
+//  'data' => $this->data,
+//  'awb' => $this->awb,
+//  'status' => $this->status,
+//  'updateOn' => $this->updateOn,
+//  'message' => $this->message,
+// ]
+$response->response();
+
+// ...
+```
+
+**Print waybill response**
+
+```php
+<?php
+// ...
+
+// contains original response received from the API
+$response->raw;
+
+// operation status code
+// 0 = Return tmxAWB,
+// 90001 = Error in Json Record Format,
+// 90003 = API KEY NOT AUTORIZED,
+// 90004 = ERROR Contact Support
+$response->code;
+
+// operation status text
+// 0 = Operation Success,
+// 90001 = JSON,
+// 90003 = Authorization,
+// 90004 = System
+$response->data;
+
+// waybill pdf as base64 string
+$response->contents;
+
+// returns true if shipment creation failed
+$response->hasError();
+
+// returns true if shipment exists
+$response->exists();
+
+// array wrapping response properties and methods
+// [
+//  'error' => $this->hasError(),
+//  'exists' => $this->exists(),
+//  'code' => $this->code,
+//  'data' => $this->data,
+//  'contents' => $this->contents,
+// ]
+$response->response();
+
+// ...
+```
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ROADMAP -->
@@ -295,6 +456,6 @@ Project Link: [https://github.com/kmuharam/tamex-php](https://github.com/kmuhara
 [issues-shield]: https://img.shields.io/github/issues/kmuharam/tamex-php.svg?style=for-the-badge
 [issues-url]: https://github.com/kmuharam/tamex-php/issues
 [license-shield]: https://img.shields.io/github/license/kmuharam/tamex-php.svg?style=for-the-badge
-[license-url]: https://github.com/kmuharam/tamex-php/blob/master/LICENSE.txt
+[license-url]: https://github.com/kmuharam/tamex-php/blob/master/LICENSE.md
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/khalid-moharrum-18ab41178
