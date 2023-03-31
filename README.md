@@ -20,7 +20,7 @@
   <p align="center">
     <a href="https://www.tamex.com.sa" target="_blank">TAMEX</a> REST API integration for your <a href="https://php.net" target="_blank">PHP</a> application.
     <br />
-    <a href="https://github.com/kmuharam/tamex-php"><strong>Explore the docs »</strong></a>
+    <a href="docs/TAMEX-API-2.7 .pdf"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/kmuharam/tamex-php">View Demo</a>
@@ -89,6 +89,8 @@ This project is a PHP integration for the <a href="https://www.tamex.com.sa" tar
 ## Getting Started
 
 This package can be installed through Composer.
+
+You can view and download <a href="docs/TAMEX-API-2.7 .pdf">TAMEX 2.7 API docs from here</a>.
 
 ### Prerequisites
 
