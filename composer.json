@@ -1,10 +1,14 @@
 {
     "name": "kmuharam/tamex-php",
-    "description": "",
+    "description": "This project is a PHP integration for the TAMEX v2 REST API",
     "keywords": [
         "kmuharam",
         "tamex-php",
+        "php",
+        "tamex",
+        "tam express",
         "shipping",
+        "shipment",
         "cargo",
         "logistics"
     ],
@@ -21,22 +25,10 @@
     "require": {
         "php": "^7.4|^8.0"
     },
-    "require-dev": {
-        "phpunit/phpunit": "^9.0"
-    },
     "autoload": {
         "psr-4": {
             "Kmuharam\\Tamex\\": "src"
         }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Kmuharam\\Tamex\\Tests\\": "tests"
-        }
-    },
-    "scripts": {
-        "test": "vendor/bin/phpunit",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
     },
     "config": {
         "sort-packages": true
